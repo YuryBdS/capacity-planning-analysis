@@ -1,6 +1,6 @@
 from pathlib import Path
 import math
-import pandas as pd
+import matplotlib.pyplot as plt
 
 
 # Locate the dataset
@@ -76,3 +76,39 @@ for scenario_name, growth_rate in scenarios.items():
         f"Headcount={scenario_headcount} | "
         f"Status={status}"
     )
+    # Generate demand scenario chart
+scenario_names = []
+scenario_demands = []
+
+for scenario_name, growth_rate in scenarios.items():
+    scenario_names.append(scenario_name)
+    scenario_demands.append(average_demand * (1 + growth_rate))
+
+output_dir = BASE_DIR / "outputs"
+output_dir.mkdir(exist_ok=True)
+
+plt.figure(figsize=(8, 5))
+
+plt.bar(scenario_names, scenario_demands)
+
+plt.axhline(
+    y=average_capacity,
+    linestyle="--",
+    label=f"Current Capacity ({average_capacity:.0f})"
+)
+
+plt.title("Demand Growth vs Current Capacity")
+plt.xlabel("Demand Scenario")
+plt.ylabel("Activities per Day")
+plt.legend()
+
+plt.tight_layout()
+
+plt.savefig(
+    output_dir / "demand_scenarios.png",
+    dpi=150
+)
+
+plt.close()
+
+print("\nChart generated: outputs/demand_scenarios.png")
