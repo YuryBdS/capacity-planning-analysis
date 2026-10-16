@@ -70,6 +70,14 @@ The project will evaluate:
 - +20% Demand
 - +30% Demand
 
+  ## Results
+
+The current team has sufficient capacity to support the average demand scenario.
+
+However, a demand increase of approximately 10% already exceeds the current operational capacity and requires additional headcount.
+
+![Demand Growth vs Current Capacity](outputs/demand_scenarios.png)
+
 The goal is to understand when the current structure becomes insufficient and when additional resources are required.
 
 ## Project Structure
