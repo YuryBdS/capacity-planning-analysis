@@ -21,7 +21,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install pandas
+        run: pip install pandas matplotlib
 
       - name: Run capacity analysis
         run: python analysis/capacity_analysis.py
