@@ -25,9 +25,9 @@ jobs:
 
       - name: Run capacity analysis
         run: python analysis/capacity_analysis.py
-        - name: Upload demand scenario chart
-  uses: actions/upload-artifact@v4
-  with:
-    name: demand-scenarios-chart
-    path: outputs/demand_scenarios.png
-        
+
+      - name: Upload demand scenario chart
+        uses: actions/upload-artifact@v4
+        with:
+          name: demand-scenarios-chart
+          path: outputs/demand_scenarios.png
