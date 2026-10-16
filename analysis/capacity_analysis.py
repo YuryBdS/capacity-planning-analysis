@@ -47,3 +47,32 @@ print(f"Average daily capacity: {average_capacity:.1f}")
 print(f"Average capacity gap: {average_gap:.1f}")
 print(f"Average backlog reduction: {average_backlog_reduction:.1f}")
 print(f"Required headcount: {required_headcount}")
+# Demand growth scenarios
+scenarios = {
+    "Current": 0.00,
+    "+10%": 0.10,
+    "+20%": 0.20,
+    "+30%": 0.30,
+}
+
+print("\nDEMAND SCENARIOS")
+print("-" * 50)
+
+for scenario_name, growth_rate in scenarios.items():
+    scenario_demand = average_demand * (1 + growth_rate)
+
+    scenario_gap = average_capacity - scenario_demand
+
+    scenario_headcount = math.ceil(
+        scenario_demand / productivity_per_analyst
+    )
+
+    status = "Sufficient" if scenario_gap >= 0 else "Insufficient"
+
+    print(
+        f"{scenario_name}: "
+        f"Demand={scenario_demand:.1f} | "
+        f"Capacity Gap={scenario_gap:.1f} | "
+        f"Headcount={scenario_headcount} | "
+        f"Status={status}"
+    )
